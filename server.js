@@ -9,6 +9,7 @@ var client = new Twitter({
 
 var params = { screen_name: 'nodejs' };
 
+const port = process.env.PORT || 3000;
 
 var express = require('express')
 var app = express()
@@ -30,4 +31,10 @@ app.get('/tw', function(req, res) {
 
 })
 
-app.listen(3000)
+app.listen(port, (err) => {
+
+    if (err) throw new Error(err);
+
+    console.log(`Servidor corriendo en puerto ${ port }`);
+
+});
